@@ -19,7 +19,7 @@ const Home = () => {
     { name: "Saved", link: "/saved", icon: AiOutlineHeart, margin: true },
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <section className="flex">
       <div
@@ -66,9 +66,9 @@ const Home = () => {
         </div>
       </div>
       <div className="w-full h-full">
-        <div className="w-full flex justify-between items-center px-4 py-3 font-medium bg-slate-300">
-          <p className="text-base text-slate-700">Wheather App</p>
-          <div className="px-3 py-2 md:flex hidden justify-between items-center gap-1 bg-slate-200 shadow-lg rounded-md">
+        <div className="w-full flex justify-between items-center px-4 py-3 font-medium bg-slate-100">
+          <p className="text-base text-slate-700">Weather App</p>
+          <div className="px-3 py-2 md:flex hidden justify-between items-center gap-1 bg-slate-100 shadow-lg rounded-md">
             <input
               type="text"
               placeholder="Search"

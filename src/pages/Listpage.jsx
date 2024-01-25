@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { getinitialWheatherData } from "../redux/features/weatherSlice";
+import { useDispatch } from "react-redux";
 
 const Listpage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getinitialWheatherData())
+      .unwrap()
+      .then((data) => console.log(data.data));
+  }, []);
+
   return (
     <div>
-      <div className="px-3 py-2 flex md:hidden w-full justify-between items-center gap-1 bg-slate-200 shadow-lg rounded-md">
+      <div className="px-3 py-2 flex md:hidden w-full justify-between items-center gap-1 bg-slate-100 shadow-lg rounded-md">
         <input
           type="text"
           placeholder="Search"
@@ -22,18 +33,6 @@ const Listpage = () => {
         </svg>
       </div>
       <div className="w-full mt-3 h-[90vh] overflow-y-scroll ">
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
-        <div className="w-full h-20 bg-white rounded-md mb-4"></div>
         <div className="w-full h-20 bg-white rounded-md mb-4"></div>
       </div>
     </div>
