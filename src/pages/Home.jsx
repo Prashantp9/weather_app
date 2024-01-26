@@ -8,10 +8,12 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Listpage from "./Listpage";
 import { MdOutlineDashboard } from "react-icons/md";
+import MoreInfo from "./MoreInfo";
 import { RiSettings4Line } from "react-icons/ri";
 import { TbReportAnalytics } from "react-icons/tb";
 
 const Home = () => {
+  const [filter, setfilter] = useState("");
   const menus = [
     { name: "dashboard", link: "/", icon: MdOutlineDashboard },
     { name: "user", link: "/", icon: AiOutlineUser },
@@ -72,6 +74,7 @@ const Home = () => {
             <input
               type="text"
               placeholder="Search"
+              onChange={(e) => setfilter(e.target.value)}
               className="outline-none bg-transparent w-40 text-slate-700 text-sm"
             />
             <svg
@@ -90,7 +93,12 @@ const Home = () => {
 
         <div className="w-full h-full px-4 py-2">
           <Routes>
-            <Route path="/" element={<Listpage />} />
+            <Route path="/" element={<Listpage propFilter={filter} />} />
+          </Routes>
+          <Routes>
+            <Route path="/weather/:city" element={<MoreInfo />}>
+              {" "}
+            </Route>
           </Routes>
           <Routes>
             <Route path="/saved" element={<Favourite />}>
