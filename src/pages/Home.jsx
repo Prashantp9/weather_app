@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 const Home = () => {
   const [filter, setfilter] = useState("");
   const update = useSelector((state) => state.rootReducer.wheatherSlice.update);
-  const savedCount = JSON.parse(localStorage.getItem("favorite")).length;
+  const savedCount = JSON.parse(localStorage.getItem("favorite"))?.length;
   const menus = [
     { name: "dashboard", link: "/", icon: MdOutlineDashboard },
     { name: "user", link: "/", icon: AiOutlineUser },
