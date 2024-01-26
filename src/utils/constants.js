@@ -40,3 +40,10 @@ export function formattedDateDisplay(date) {
 
   return new Date(date).toLocaleDateString("en-US", options);
 }
+
+const speak = (text) => {
+  const value = new SpeechSynthesisUtterance(text);
+  window.speechSynthesis.speak(value);
+};
+
+export { speak };

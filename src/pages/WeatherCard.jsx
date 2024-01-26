@@ -3,15 +3,16 @@ import {
   TiWeatherSnow,
   TiWeatherSunny,
 } from "react-icons/ti";
+import { formattedDateDisplay, speak } from "../utils/constants";
 
 import { Link } from "react-router-dom";
 import { TbCloudFog } from "react-icons/tb";
 import { WiDayHaze } from "react-icons/wi";
-import { formattedDateDisplay } from "../utils/constants";
-import { useSpeechSynthesis } from "react-speech-kit";
+
+// import { useSpeechSynthesis } from "react-speech-kit";
 
 const WeatherCard = ({ data }) => {
-  const { speak } = useSpeechSynthesis();
+  // const { speak } = useSpeechSynthesis();
 
   const weatherStyle = {
     Clouds: {
@@ -37,10 +38,7 @@ const WeatherCard = ({ data }) => {
   };
 
   return (
-    <Link
-      onClick={() => speak({ text: data.name })}
-      to={`/weather/${data.name}`}
-    >
+    <Link onClick={() => speak(data.name)} to={`/weather/${data.name}`}>
       <div
         className={`w-full bg-white rounded-md p-4 mb-3 md:w-full`}
         // className={`w-full bg-[url(${

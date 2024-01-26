@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import Skeletoncard from "./Skeletoncard";
 import { TbCloudFog } from "react-icons/tb";
 import WeatherCard from "./Weathercard";
-import { useSpeechSynthesis } from "react-speech-kit";
 
 const Listpage = ({ propFilter }) => {
   const [filter, setfilter] = useState("");
@@ -113,7 +112,7 @@ const Listpage = ({ propFilter }) => {
             .map(() => <Skeletoncard />)}
 
         {!loading &&
-          locations.length > 0 &&
+          locations?.length > 0 &&
           locations
             .filter((elm, idx) => elm.name.toUpperCase().includes(filter))
             .map((elm, idx) => <WeatherCard data={elm} />)}

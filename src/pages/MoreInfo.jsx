@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { BsCloudHaze2Fill } from "react-icons/bs";
 import { TbCloudFog } from "react-icons/tb";
-import { useSpeechSynthesis } from "react-speech-kit";
+import { speak } from "../utils/constants";
 import { useState } from "react";
 
 const MoreInfo = () => {
@@ -110,7 +110,6 @@ const MoreInfo = () => {
     return new Date(date).toLocaleDateString("en-US", options);
   }
 
-  const { speak } = useSpeechSynthesis();
   const favourite = (cityName) => {
     return {
       add: () => {
@@ -269,11 +268,11 @@ const MoreInfo = () => {
             .fill(0)
             .map(() => <SkeletonContainer />)}
         {!loading &&
-          locations.length > 0 &&
+          locations?.length > 0 &&
           locations?.map((elm, idx) => (
             <>
               <Link
-                onClick={() => speak({ text: elm.name })}
+                onClick={() => speak(elm?.name)}
                 to={`/weather/${elm?.name}`}
               >
                 <div className="w-full bg-white h-full rounded-md flex flex-col gap-3 items-center py-2">
