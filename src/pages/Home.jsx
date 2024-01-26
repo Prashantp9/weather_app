@@ -1,8 +1,9 @@
 import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { FiFolder, FiMessageSquare, FiShoppingCart } from "react-icons/fi";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
+import { FaBookmark } from "react-icons/fa";
 import Favourite from "./Favourite";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -11,9 +12,12 @@ import Listpage from "./Listpage";
 import { MdOutlineDashboard } from "react-icons/md";
 import MoreInfo from "./MoreInfo";
 import { RiSettings4Line } from "react-icons/ri";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [filter, setfilter] = useState("");
+  const update = useSelector((state) => state.rootReducer.wheatherSlice.update);
+  const savedCount = JSON.parse(localStorage.getItem("favorite")).length;
   const menus = [
     { name: "dashboard", link: "/", icon: MdOutlineDashboard },
     { name: "user", link: "/", icon: AiOutlineUser },
@@ -22,6 +26,7 @@ const Home = () => {
     { name: "Setting", link: "/", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(false);
+
   return (
     <section className="flex">
       <div
@@ -81,6 +86,12 @@ const Home = () => {
               Weather App
             </Link>
           </div>
+          <Link to={"/saved"} className="flex md:hidden relative">
+            <div className="w-5 h-5 flex justify-center items-center bg-indigo-400 rounded-full text-slate-100 text-xs font-semibold absolute top-[-0.7rem] right-[-0.5rem]">
+              {savedCount}
+            </div>
+            <FaBookmark className="w-5 h-5" />
+          </Link>
           <div className="px-3 py-2 md:flex hidden justify-between items-center gap-1 bg-slate-100 shadow-lg rounded-md">
             <input
               type="text"

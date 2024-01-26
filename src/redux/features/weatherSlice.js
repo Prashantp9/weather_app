@@ -50,6 +50,7 @@ const initialState = {
     locations: [],
     currentMoreInfo: {},
   },
+  update: false,
 };
 
 const wheatherSlice = createSlice({
@@ -58,6 +59,9 @@ const wheatherSlice = createSlice({
   reducers: {
     clearLocation: (state, payload) => {
       state.data.locations = [];
+    },
+    setUpdate: (state, payload) => {
+      state.update = !state.update;
     },
   },
   extraReducers: (builder) => {
@@ -107,4 +111,4 @@ const wheatherSlice = createSlice({
 });
 
 export default wheatherSlice.reducer;
-export const { clearLocation } = wheatherSlice.actions;
+export const { clearLocation, setUpdate } = wheatherSlice.actions;

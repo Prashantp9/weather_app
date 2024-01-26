@@ -29,3 +29,14 @@
 //     icon: <TiWeatherSnow className="w-12 h-12 " />,
 //   },
 // };
+
+export function formattedDateDisplay(date) {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
+  return new Date(date).toLocaleDateString("en-US", options);
+}
