@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Favourite from "./Favourite";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Listpage from "./Listpage";
 import { MdOutlineDashboard } from "react-icons/md";
 import MoreInfo from "./MoreInfo";
 import { RiSettings4Line } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
 
 const Home = () => {
   const [filter, setfilter] = useState("");
@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <section className="flex">
       <div
-        className={`bg-[#0e0e0e] min-h-screen ${
+        className={`hidden md:block bg-[#0e0e0e] min-h-screen ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >
@@ -68,8 +68,19 @@ const Home = () => {
         </div>
       </div>
       <div className="w-full h-full">
-        <div className="w-full flex justify-between items-center px-4 py-3 font-medium bg-slate-100">
-          <p className="text-base text-slate-700">Weather App</p>
+        <div className="w-full fixed md:static flex justify-between items-center px-4 py-3 font-medium bg-slate-100  top-0 left-0 right-0">
+          <div className="flex gap-3 items-center">
+            <GiHamburgerMenu
+              onClick={() => setOpen(!open)}
+              className="w-7 h-7 md:hidden"
+            />
+            <Link
+              className="text-lg md:text-base font-semibold text-slate-700"
+              to="/"
+            >
+              Weather App
+            </Link>
+          </div>
           <div className="px-3 py-2 md:flex hidden justify-between items-center gap-1 bg-slate-100 shadow-lg rounded-md">
             <input
               type="text"
@@ -91,7 +102,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-full h-full px-4 py-2">
+        <div className="w-full h-full px-4 py-14 md:py-4">
           <Routes>
             <Route path="/" element={<Listpage propFilter={filter} />} />
           </Routes>

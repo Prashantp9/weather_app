@@ -119,14 +119,19 @@ const Listpage = ({ propFilter }) => {
           // })] rounded-md p-4 mb-3 md:w-full`}
         >
           <div>
-            <p className="text-lg font-bold text-slate-800">{data.name}</p>
+            <div className="flex w-full justify-between">
+              <p className="text-lg md:base font-bold text-slate-800">
+                {data.name}
+              </p>
+            </div>
+
             <div className="flex justify-between items-center mt-3">
               <div className="flex flex-col gap-1">
-                <p className="text-slate-800 font-semibold text-base">
+                <p className="text-slate-800 font-medium text-base md:text-xs">
                   {formattedDateDisplay(new Date())}
                 </p>
 
-                <p className="text-base font-bold text-slate-800">
+                <p className="text-base font-bold text-emerald-500">
                   {" "}
                   {data.main.temp} &deg; C
                 </p>
